@@ -117,9 +117,7 @@ class Plot:
     def animate(self):
         # dont delete this var
         # according to the docs we dont want it to be garbage collected
-        self.ani = FuncAnimation(self.fig, self.update, cache_frame_data=False, frames=60*10, blit=True, repeat=True, interval=0.1)
-        # writer = FFMpegWriter(fps=60)
-        # writer = FFMpegWriter(fps=60)
+        self.ani = FuncAnimation(self.fig, self.update, cache_frame_data=False, frames=itertools.count(), blit=True, repeat=True, interval=10)
         # self.ani.save('lets-go.mp4', writer)
         plt.show()
 
@@ -152,8 +150,8 @@ def main():
     with EMGStreamer() as s:
         # while True:
         #     s()
-        plot = Plot.seperate(streamer=s)
-        # plot = Plot.double(streamer=s)
+        # plot = Plot.seperate(streamer=s)
+        plot = Plot.double(streamer=s)
         # plot = Plot.seperate(streamer=s)
         plot.animate()
         return

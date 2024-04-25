@@ -7,7 +7,7 @@ Streamer = Callable[[], Iterator]
 @dataclass
 class EMGStreamer:
 
-    com: str = "COM12"
+    com: str = "COM4"
     baud_rate: int = 115200
 
     # def __post_init__(self):
